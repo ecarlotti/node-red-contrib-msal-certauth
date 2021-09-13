@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-msalcertauth",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Azure MSAL Authentication using a client certificate",
   "main": "msalcertauth.js",
   "keywords": [

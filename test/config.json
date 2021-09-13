@@ -1,0 +1,10 @@
+{
+    "credentials" : 
+    {
+        "clientId" : "12345-asdcv- ...",
+		"scope" : "api://12344-23423-...",
+		"tenantId" : "43532-3SDDS-234...",
+		"thumbprint" : "AB:00:12:...",
+		"privateKeyLocation" : "./privateKey.pem"
+    }
+}
