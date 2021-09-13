@@ -27,23 +27,27 @@ Already registered App on Azure Portal.
 
 ## Usage
 
-This node is using `Redirect Method` of msal  
+This node is using `Certificate Method` of msal  
 Enter:
 
-- `Scopes` :  e.g. **user.read**  or **<https://management.azure.com/.default>**...
-- `Init URL` : Url that will lead to Azure Login: **/login2azure**  
-- `Local Redirect URL` : RedirectUrl that will listen on Azure Login Response: **/redirect**  
-**Note: On Azure Portal you have to add the complete REDIRECT URL !!!  
-Running NR on `http://localhost:1880` then you have to add `http://localhost:1880/redirect` for your app in Azure Portal !  
-This node will patch up the complete REDIRECT URL on its own and pass it to msal!**  
+- `Client ID` :  either as **msg.clientId**  or via config, e.g. **"12345678-1abc-xxxx-8906-000"** 
+- `Tenant ID` :  either as **msg.tenantId**  or via config, e.g. **"34509348-0000-zzzz-8906-000"** 
+- `Scope` : either as **msg.scope**  or via config, e.g. **"api://sdfs6335-s463-0000-...."** 
+- `Thumbprint` :  either as **msg.thumbprint**  or via config, e.g. **"00:1A:F6:39:CD:82:F0:...."** 
+- `PrivateKey` :  either as **msg.privateKey**  or via config by setting the relativ path to the *.pem File
+ 
+     
 
-Node can receive `msg.update = true` object to do a silent renewal of token.  
-Node will send msal processed response object. The included accessToken can be use to trigger http node to do REST call on Azure API  
 
-## Config Node
+Node can receive `msg.clientId, msg.tenantId, msg.scope, msg.thumbprint, msg.privateKey` object.  
 
-- Application (client) ID  
-- Application (client) Secret
-- Authority (`https://login.microsoftonline.com/<tenantId>` or `https://login.microsoftonline.com/common` ...)
+Node will send msal JWT as response object. The included accessToken can be use to trigger http node to do REST call on Azure API. Example:
 
----
+`msg.msalToken: "eyJ0eXAiOiJKV1QiLCJhbGxx...."`
+
+## Unit-Testing /Test JWT 
+
+- Install node via `npm i node-red-contrib-msalcertauth`
+- Rename /test/config_sample.json to config.json and set the proper clientId, tenantId etc. 
+- Run `npm test`
+- Respone should be a JWT.

@@ -24,12 +24,20 @@ module.exports = function(RED) {
 		var msal_scope = msg.scope || this.scope ;
 		var msal_tenantId = msg.tenantId || this.tenantId ;
 		var msal_thumbprint = msg.thumbprint || this.thumbprint ;
-		var msal_privateKeyLocation = msg.privateKeyLocation || this.privateKeyLocation ;
-		var msal_privateKey =  fs.readFileSync(msal_privateKeyLocation).toString();
+		var msal_privateKeyLocation =  this.privateKeyLocation ;
+		var msal_privateKey;
+		if (msg.hasOwnProperty("privateKey")){
+			msal_privateKey = msg.privateKey;
+		}
+		else {
+		 msal_privateKey =  fs.readFileSync(msal_privateKeyLocation).toString();
+		}
 
 		const tokenRequest = {
 				scopes: [ msal_scope + "/.default"],
 		};
+
+	
 	   
 		const cca = new msal.ConfidentialClientApplication({
 				auth: {

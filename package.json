@@ -1,8 +1,13 @@
 {
   "name": "node-red-contrib-msalcertauth",
-  "version": "1.0.0",
-  "description": "Azure MSAL Authentication using as client certificate with private Key ",
+  "version": "1.0.5",
+  "description": "Azure MSAL Authentication using a client certificate",
   "main": "msalcertauth.js",
+  "keywords": [
+    "node-red",
+    "msal",
+    "azure"
+  ],
   "scripts": {
     "test": "mocha --config=./test/config.json --timeout 5000 \"test/**/*_spec.js\""
   },
@@ -16,6 +21,10 @@
     "nodes": {
       "msalcertauth": "msalcertauth.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qbicsmedia/node-red-contrib-msalcertauth.git"
   },
   "devDependencies": {
     "nconf": "^0.11.3",
