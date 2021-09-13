@@ -48,6 +48,6 @@ Node will send msal JWT as response object. The included accessToken can be use 
 ## Unit-Testing /Test JWT 
 
 - Install node via `npm i node-red-contrib-msalcertauth`
-- Rename /test/config_sample.json to config.json and set the proper clientId, tenantId etc. 
+- Set the proper clientId, tenantId in the config.json file. 
 - Run `npm test`
 - Respone should be a JWT.
