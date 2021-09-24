@@ -1,0 +1,55 @@
+<script type="text/javascript">
+    RED.nodes.registerType('msal-certauth',{
+        category: 'function',
+        color: '#007FFF',
+        defaults: {
+            clientId: {value:""},
+            tenantId: {value:""},
+            scope: {value:""},
+            thumbprint: {value:""},
+            privateKeyLocation: {value:""},
+         
+        },
+        inputs:1,
+        outputs:1,
+        icon: "white-globe.svg",
+        label: function() {
+            return this.name||"msal-certauth";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="msal-certauth">
+    <div class="form-row">
+   
+		<label for="node-input-clientId"><i class="fa fa-tag"></i> Client Id</label>
+        <input type="text" id="node-input-clientId" placeholder="ClientId">
+        
+    </div class="form-row">	
+    <div class="form-row">
+		<label for="node-input-tenantId"><i class="fa fa-tag"></i> Tenant Id</label>
+        <input type="text" id="node-input-tenantId" placeholder="Tenant Id">
+    </div class="form-row">	
+    <div class="form-row">	
+		<label for="node-input-scope"><i class="fa fa-tag"></i> Scope</label>
+        <input type="text" id="node-input-scope" placeholder="Scope">
+    </div class="form-row">	
+    <div class="form-row">	
+		<label for="node-input-thumbprint"><i class="fa fa-tag"></i> Thumbprint</label>
+        <input type="text" id="node-input-thumbprint" placeholder="To get the tumbprint run 'openssl x509 -in <certfile>.pem -noout -fingerprint'">
+        </div class="form-row">		
+        <div class="form-row">   
+		<label for="node-input-privateKeyLocation"><i class="fa fa-tag"></i> Private Key</label>
+        <input type="text" id="node-input-privateKeyLocation" placeholder="Private Key (Copy and Paste from private.pem File">
+    </div class="form-row">		
+		
+    <div class="form-tips">
+        <span>Tip: The filename should be an absolute path, otherwise it will be relative to the working directory of the Node-RED process.</span>
+    </div>
+
+    </div>
+</script>
+
+<script type="text/html" data-help-name="msal-certauth">
+    <p> Node RED node to authenticate using MSAL using a Certificate file</p>
+</script>

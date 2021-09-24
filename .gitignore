@@ -1,6 +1,6 @@
 node_modules/
 test/*
-!test/msalcertauth_spec.js
+!test/msal-certauth_spec.js
 !test/config.json
 package-lock.json
 testscript.js

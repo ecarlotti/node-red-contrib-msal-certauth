@@ -1,4 +1,4 @@
-# node-red-contrib-msalcertauth
+# node-red-contrib-msal-certauth
 
 [Node RED](https://nodered.org) node to authenticate using MSAL using a Certificate file.  
 
@@ -8,15 +8,15 @@ Mainly based on Azure docs and [samples](https://github.com/Azure-Samples/ms-ide
 
 1. Open the menu in the upper right corner  
 2. Choose **Manage Palette**  
-3. Under **Install**, search for: *node-red-contrib-msalcertauth*  
+3. Under **Install**, search for: *node-red-contrib-msal-certauth*  
 
 ## Installation via the command line
 
-1. Navigate to your Node RED user directory, usally `$HOME/.node-red`  
+1. Navigate to your Node RED user directory, usally `$HOME/.node-red`. For further details see here: https://nodered.org/docs/user-guide/runtime/adding-nodes#installing-with-npm
 2. Run the following command:  
 
 ```shell
-npm install node-red-contrib-msalcertauth
+npm install node-red-contrib-msal-certauth
 ```
 
 ---
@@ -47,7 +47,7 @@ Node will send msal JWT as response object. The included accessToken can be use 
 
 ## Unit-Testing /Test JWT 
 
-- Install node via `npm i node-red-contrib-msalcertauth`
+- Install node via `npm i node-red-contrib-msal-certauth`
 - Set the proper clientId, tenantId in the config.json file. 
 - Run `npm test`
 - Respone should be a JWT.

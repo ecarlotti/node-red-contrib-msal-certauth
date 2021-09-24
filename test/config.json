@@ -1,10 +1,10 @@
 {
     "credentials" : 
     {
-        "clientId" : "12345-asdcv- ...",
-		"scope" : "api://12344-23423-...",
-		"tenantId" : "43532-3SDDS-234...",
-		"thumbprint" : "AB:00:12:...",
-		"privateKeyLocation" : "./privateKey.pem"
+        "clientId" : "53564689-4b1f-41ec-8906-745ff02534a1",
+		"scope" : "api://ea7a4964-e5bd-4367-be44-880c187a90c7",
+		"tenantId" : "a1e7a36c-6a48-4768-9d65-3f679c0f3b12",
+		"thumbprint" : "98:F3:E5:39:CD:82:F0:66:6E:A4:6A:92:1E:5B:37:4D:85:C6:82:E2",
+		"privateKeyLocation" : "./test/privatekey.pem"
     }
 }

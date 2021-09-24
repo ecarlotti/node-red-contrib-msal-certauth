@@ -17,7 +17,7 @@ var privateKeyLocation = credentials.privateKeyLocation;
 
 
 var helper = require("node-red-node-test-helper");
-var msalcertauthNode = require("../msalcertauth.js");
+var msal-certauthNode = require("../msal-certauth.js");
 
 const settings = {
   functionGlobalContext: {
@@ -32,7 +32,7 @@ helper.init(require.resolve('node-red'));
 // mocking an environment
 
 
-describe('msalcertauth Node-Tests', function () {
+describe('msal-certauth Node-Tests', function () {
  
   before(function(done) {
    
@@ -49,15 +49,15 @@ describe('msalcertauth Node-Tests', function () {
 
   it('should be loaded', function (done) {
    
-    var flow = [{ id: "n1", type: "msalcertauth", name: "msalcertauth" }];
-    helper.load(msalcertauthNode, flow, function () {
+    var flow = [{ id: "n1", type: "msal-certauth", name: "msal-certauth" }];
+    helper.load(msal-certauthNode, flow, function () {
       var n1 = helper.getNode("n1");
       try {
     //    n1.should.have.property('clientId', "");
-     /*   n1.should.have.property('tenantId', 'msalcertauth');
-        n1.should.have.property('scope', 'msalcertauth');
-        n1.should.have.property('thumbprint', 'msalcertauth');
-        n1.should.have.property('privateKey', 'msalcertauth');*/
+     /*   n1.should.have.property('tenantId', 'msal-certauth');
+        n1.should.have.property('scope', 'msal-certauth');
+        n1.should.have.property('thumbprint', 'msal-certauth');
+        n1.should.have.property('privateKey', 'msal-certauth');*/
         done();
       } catch(err) {
         done(err);
@@ -67,19 +67,26 @@ describe('msalcertauth Node-Tests', function () {
 
   it('should get an JWT from Azure', function (done) {
     var flow = [
-      { id: "n1", type: "msalcertauth", name: "msalcertauth",wires:[["n2"]] },
+      { id: "n1", type: "msal-certauth", name: "msal-certauth",wires:[["n2"]] },
       { id: "n2", type: "helper" }
     ];
-    helper.load(msalcertauthNode, flow, settings, function () {
+    helper.load(msal-certauthNode, flow, settings, function () {
       var n2 = helper.getNode("n2");
       var n1 = helper.getNode("n1");
+      n1.trace.should.be.calledWithExactly('badness');
+      
+      n1.on("input", function(msg) {
+        console.log(msg);
+        
+      });    
+
       n2.on("input", function (msg) {
        
         console.log('Test message received N1: ' + JSON.stringify(msg));
         try {
          
          msg.should.have.property('tokenType', 'Bearer');
-    //      msg.should.have.property('tokenType', 'Bearer');
+  
           done();
         } catch(err) {
          done( err);
