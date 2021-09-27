@@ -27,7 +27,7 @@ module.exports = function(RED) {
 	//	var msal_privateKeyLocation =  msg.privateKeyLocation || this.privateKeyLocation ;
 		var msal_privateKey;
 		if (msg.hasOwnProperty("privateKeyLocation")){
-			msal_privateKey = fs.readFileSync(msal_privateKeyLocation).toString();
+			msal_privateKey = fs.readFileSync(msg.privateKeyLocation).toString();
 		}
 		else {
 			if (msg.hasOwnProperty("privateKey")){
