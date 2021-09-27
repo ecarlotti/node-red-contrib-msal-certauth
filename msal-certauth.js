@@ -24,13 +24,18 @@ module.exports = function(RED) {
 		var msal_scope = msg.scope || this.scope ;
 		var msal_tenantId = msg.tenantId || this.tenantId ;
 		var msal_thumbprint = msg.thumbprint || this.thumbprint ;
-		var msal_privateKeyLocation =  this.privateKeyLocation ;
+	//	var msal_privateKeyLocation =  msg.privateKeyLocation || this.privateKeyLocation ;
 		var msal_privateKey;
-		if (msg.hasOwnProperty("privateKey")){
-			msal_privateKey = msg.privateKey;
+		if (msg.hasOwnProperty("privateKeyLocation")){
+			msal_privateKey = fs.readFileSync(msal_privateKeyLocation).toString();
 		}
 		else {
-		 msal_privateKey =  fs.readFileSync(msal_privateKeyLocation).toString();
+			if (msg.hasOwnProperty("privateKey")){
+			}
+			else {
+				msal_privateKey =  fs.readFileSync(this.privateKeyLocation).toString();
+			}
+		 
 		}
 
 		const tokenRequest = {
