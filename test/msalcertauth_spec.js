@@ -17,7 +17,7 @@ var privateKeyLocation = credentials.privateKeyLocation;
 
 
 var helper = require("node-red-node-test-helper");
-var msal-certauthNode = require("../msal-certauth.js");
+var msalcertauthNode = require("../msal-certauth.js");
 
 const settings = {
   functionGlobalContext: {
@@ -50,7 +50,7 @@ describe('msal-certauth Node-Tests', function () {
   it('should be loaded', function (done) {
    
     var flow = [{ id: "n1", type: "msal-certauth", name: "msal-certauth" }];
-    helper.load(msal-certauthNode, flow, function () {
+    helper.load(msalcertauthNode, flow, function () {
       var n1 = helper.getNode("n1");
       try {
     //    n1.should.have.property('clientId', "");
@@ -70,7 +70,7 @@ describe('msal-certauth Node-Tests', function () {
       { id: "n1", type: "msal-certauth", name: "msal-certauth",wires:[["n2"]] },
       { id: "n2", type: "helper" }
     ];
-    helper.load(msal-certauthNode, flow, settings, function () {
+    helper.load(msalcertauthNode, flow, settings, function () {
       var n2 = helper.getNode("n2");
       var n1 = helper.getNode("n1");
       n1.trace.should.be.calledWithExactly('badness');
