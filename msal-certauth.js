@@ -69,7 +69,8 @@ module.exports = function(RED) {
 			node.send(msg);
 		  })
 		  .catch((error) => {
-			msg.tokenType = "";	
+			msg.tokenType = "";
+			msg.error = error;
 			node.send(msg);      
 		  });
 
